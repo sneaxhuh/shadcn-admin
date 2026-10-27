@@ -27,7 +27,10 @@ describe.each(['ltr', 'rtl'] as const)('SidebarTrigger (%s)', (direction) => {
         <SidebarTrigger />
       </SidebarProvider>
     )
-    const trigger = screen.getByRole('button', { name: 'Toggle Sidebar' })
+    const trigger = screen.getByRole('button', {
+      name: 'Toggle Sidebar',
+      includeHidden: true,
+    })
     await expect.element(trigger).toHaveAttribute('aria-expanded', 'true')
     // Focus is explicit here; end-to-end checks separately verify Tab reachability.
     trigger.element().focus()
@@ -50,7 +53,10 @@ describe.each(['ltr', 'rtl'] as const)('SidebarTrigger (%s)', (direction) => {
         <SidebarTrigger />
       </SidebarProvider>
     )
-    const trigger = screen.getByRole('button', { name: 'Toggle Sidebar' })
+    const trigger = screen.getByRole('button', {
+      name: 'Toggle Sidebar',
+      includeHidden: true,
+    })
     await expect.element(trigger).toHaveAttribute('aria-expanded', 'false')
     trigger.element().focus()
     await userEvent.keyboard('{Enter}')
